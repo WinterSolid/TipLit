@@ -39,6 +39,25 @@ struct TipLitView: View {
           }
         }
         .pickerStyle(.navigationLink)
+        
+      }
+      
+      Section ("How much do you want to tip"){
+        Picker("Tip percent", selection: $tipPercentage){
+          ForEach (tipPercentageValues, id: \.self) { i in
+            Text("\(i, format: .percent)")
+          }
+        }
+        .pickerStyle(.segmented)
+      }
+      
+      Section("Amount per Person") {
+        if totalPerPerson > 0 {
+          Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+        } else {
+          Text ("- - - - -")
+            .foregroundStyle(.gray)
+        }
       }
     }
   }
