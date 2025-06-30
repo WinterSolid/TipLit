@@ -16,7 +16,7 @@ struct TipLitView: View {
   @FocusState private var amountIsFocused: Bool
   
   // variables and computational calculations
-  let tipPercentageValues: [Int] = [10, 15, 20, 25, 0]
+  let tipPercentageValues: [Int] = [0, 10, 15, 18, 20, 25]
   var totalPerPerson: Double {
     TipCalculator.amountPerPerson(
       checkAmount: checkAmount,
@@ -26,46 +26,57 @@ struct TipLitView: View {
   }
   
   var body: some View {
-    Form {
-      Section {
-        //TextField - Filter out bad values on enter
-        TextField("Amount",value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-          .keyboardType(.decimalPad)
-          .focused($amountIsFocused) //keyboard is active
+    NavigationStack {
+      Spacer(minLength: 60.0)
+      Form {
+        Section {
+          //TextField - Filter out bad values on enter
+          TextField("Amount",value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+            .keyboardType(.decimalPad)
+            .focused($amountIsFocused) //keyboard is active
+          
+          Picker("How many people", selection: $numberOfPeople) {
+            ForEach(2..<20) {
+              Text("\($0)")
+            }
+          }
+          .pickerStyle(.navigationLink)
+        }
         
-        Picker("How many people", selection: $numberOfPeople) {
-          ForEach(2..<20) {
-            Text("\($0)")
+        Section ("How much do you want to tip?"){
+          Picker("Tip percent", selection: $tipPercentage){
+            ForEach (tipPercentageValues, id: \.self) { i in
+              Text("\(i, format: .percent)")
+            }
+          }
+          .pickerStyle(.segmented)
+        }
+      
+        Section("Amount per Person:") {
+          if totalPerPerson > 0 {
+            Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+          } else {
+            Text ("- - - - -")
+              .foregroundStyle(.gray)
           }
         }
-        .pickerStyle(.navigationLink)
-        
       }
-      
-      Section ("How much do you want to tip"){
-        Picker("Tip percent", selection: $tipPercentage){
-          ForEach (tipPercentageValues, id: \.self) { i in
-            Text("\(i, format: .percent)")
+      .navigationTitle("TipLit").font(.largeTitle)
+      .toolbar {
+        if amountIsFocused {
+          Button("Done") {
+            amountIsFocused = false
           }
-        }
-        .pickerStyle(.segmented)
-      }
-      
-      Section("Amount per Person") {
-        if totalPerPerson > 0 {
-          Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-        } else {
-          Text ("- - - - -")
-            .foregroundStyle(.gray)
+          
         }
       }
     }
   }
 }
-
-
-
-
-#Preview {
-  TipLitView()
-}
+  
+  
+  
+  
+  #Preview {
+    TipLitView()
+  }
