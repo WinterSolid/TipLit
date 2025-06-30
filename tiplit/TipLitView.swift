@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TipLitView: View {
   
+  
   // view property wrappers
   @State private var checkAmount: Double = 0.0
   @State private var numberOfPeople: Int = 0
