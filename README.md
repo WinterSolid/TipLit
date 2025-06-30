@@ -12,6 +12,11 @@
 - Dynamic keyboard handling with focus management
 
 ## Screenshots
+<img src="https://github.com/user-attachments/assets/153da3e0-2d6b-4dcf-9378-eda0c80e4ddf" alt="p1-tiplit" width="300" />
+<img src="https://github.com/user-attachments/assets/50036bfd-db7f-4e53-bb7b-d686939e403d" alt="p5-tiplit" width="300" />
+<img src="https://github.com/user-attachments/assets/cb1a58ad-2888-4139-9803-75c095da60fe" alt="p3-tiplit" width="300" />
+
+
 
 
 
