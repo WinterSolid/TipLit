@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class tiplitUITestsLaunchTests: XCTestCase {
+final class TipLitUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
