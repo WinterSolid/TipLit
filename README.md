@@ -16,9 +16,9 @@
 <img src="https://github.com/user-attachments/assets/50036bfd-db7f-4e53-bb7b-d686939e403d" alt="p5-tiplit" width="300" />
 <img src="https://github.com/user-attachments/assets/cb1a58ad-2888-4139-9803-75c095da60fe" alt="p3-tiplit" width="300" />
 
+### New Feature -  Tip amount by percentage.  
 
-
-
+<img src="https://github.com/user-attachments/assets/bf1879ef-116c-48d9-ad3e-113c2090833e" alt="Tiplit3" width="300" />
 
 ## Technologies
 
