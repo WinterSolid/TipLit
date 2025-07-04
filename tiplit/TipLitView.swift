@@ -13,7 +13,7 @@ struct TipLitView: View {
   @State private var checkAmount: Double = 0
   @State private var numberOfPeople: Int = 2        // 2–19 people
   @State private var tipPercentage: Int = 20        // default 20 %
-  @FocusState private var amountIsFocused: Bool
+  @FocusState private var isAmountinputInFocused: Bool
   
   // MARK: - Constants
   private let tipPercentageValues = [8, 10, 15, 18, 20, 25]
@@ -37,7 +37,7 @@ struct TipLitView: View {
                     value: $checkAmount,
                     format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
           .keyboardType(.decimalPad)
-          .focused($amountIsFocused)
+          .focused($isAmountinputInFocused)
           
           Picker("How many people", selection: $numberOfPeople) {
             ForEach(2..<20) { Text("\($0)") }
@@ -71,8 +71,8 @@ struct TipLitView: View {
       .navigationTitle("TipLit")
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
-        if amountIsFocused {
-          Button("Done") { amountIsFocused = false }
+        if isAmountinputInFocused {
+          Button("Done") { isAmountinputInFocused = false }
         }
       }
     }
